@@ -71,11 +71,14 @@ static const char *darkercmd[]  = { "/usr/bin/xbacklight", "-10", NULL };
 static const char *brightercmd[]  = { "/usr/bin/xbacklight", "+10", NULL };
 static const char *loudercmd[]  = { "/usr/bin/amixer", "-D", "pipewire", "sset", "Master", "5%+", NULL };
 static const char *quietercmd[]  = { "/usr/bin/amixer", "-D", "pipewire", "sset", "Master", "5%-", NULL };
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = clipmenucmd } },
+	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_7,      spawn,          {.v = darkercmd } },
