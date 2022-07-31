@@ -73,10 +73,14 @@ static const char *loudercmd[]  = { "/usr/bin/amixer", "-D", "pipewire", "sset",
 static const char *quietercmd[]  = { "/usr/bin/amixer", "-D", "pipewire", "sset", "Master", "5%-", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *passmenucmd[] = { "/usr/local/bin/passmenu", NULL }; 
+static const char *passmenuotpcmd[] = { "/usr/local/bin/passmenu", "--otp", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_semicolon,      spawn,  {.v = passmenucmd } },
+	{ MODKEY|ShiftMask,             XK_semicolon,      spawn,  {.v = passmenuotpcmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = clipmenucmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
