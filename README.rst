@@ -10,3 +10,4 @@ Changes
 * Keybinds to change volume using pacmd and brightness using xbacklight
 * Toggle visibility of a scratchpad terminal on all tags
 * Keybinds to launch passmenu
+* Two status bars

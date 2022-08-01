@@ -5,6 +5,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
+static const int extrabar           = 1;        /* 0 means no extra bar */
 static const char *fonts[]          = { "Terminus:size=12" };
 static const char dmenufont[]       = "Terminus:size=12";
 static const char col_gray1[]       = "#222222";
@@ -30,10 +31,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
- 	/* class      instance    title       tags mask     isfloating   isterminal monitor */
- 	{ "Gimp",     NULL,       NULL,       0,            1,           0,         -1 },
- 	{ "qemu-system-x86_64",     NULL,       NULL,       0,            1,        0,        0 },
- 	{ "st",       NULL,       NULL,       0,            0,           1,         1,        -1 },
+ 	/* class      instance    title       tags mask     isfloating   monitor */
+ 	{ "Gimp", NULL, NULL, 0, 1, -1 },
+ 	{ "qemu-system-x86_64", NULL, NULL, 0, 1, 0 },
+ 	{ "st", NULL, NULL, 0, 0, -1 },
 };
 
 /* layout(s) */
@@ -90,6 +91,7 @@ static Key keys[] = {
   { MODKEY,                       XK_minus,      spawn,      {.v = quietercmd } },
 	{ MODKEY,                       XK_equal,      spawn,      {.v = loudercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+  { MODKEY,                       XK_b,      toggleextrabar, {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
