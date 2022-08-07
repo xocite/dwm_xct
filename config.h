@@ -102,7 +102,6 @@ static Key keys[] = {
   { MODKEY,                       XK_minus,      spawn,      {.v = quietercmd } },
 	{ MODKEY,                       XK_equal,      spawn,      {.v = loudercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-  { MODKEY,                       XK_b,      toggleextrabar, {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
