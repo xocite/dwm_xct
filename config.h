@@ -84,7 +84,9 @@ static const char *brightercmd[]  = { "/usr/bin/xbacklight", "+10", NULL };
 static const char *loudercmd[]  = { "/usr/bin/amixer", "-D", "pipewire", "sset", "Master", "5%+", NULL };
 static const char *quietercmd[]  = { "/usr/bin/amixer", "-D", "pipewire", "sset", "Master", "5%-", NULL };
 static const char scratchpadname[] = "scratchpad";
+static const char scratchpadnametwo[] = "(Untitled)";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *scratchpadcmdtwo[] = { "leafpad", NULL };
 static const char *passmenucmd[] = { "/usr/local/bin/passmenu", NULL }; 
 static const char *passmenuotpcmd[] = { "/usr/local/bin/passmenu", "--otp", NULL };
 
@@ -95,6 +97,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_semicolon,      spawn,  {.v = passmenuotpcmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = clipmenucmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY|ShiftMask,             XK_grave,  togglescratchtwo,  {.v = scratchpadcmdtwo } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_7,      spawn,          {.v = darkercmd } },
