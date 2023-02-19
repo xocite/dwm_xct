@@ -24,6 +24,9 @@ static const char *colors[][3]      = {
  	[SchemeTabInactive]  = { col_gray1, col_gray3,  col_gray1 }
 };
 
+#define ICONSIZE 16   /* icon size */
+#define ICONSPACING 5 /* space between icon and title */
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
