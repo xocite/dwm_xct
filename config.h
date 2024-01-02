@@ -77,7 +77,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *clipmenucmd[] = { "/usr/bin/clipmenu", NULL };
+static const char *clipmenucmd[] = { "/home/jiff/binary/clipmenu", NULL };
 static const char *dmenucmd[] = { "/home/jiff/binary/dmenu_run", "-m", dmenumon, "-l", "5", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "/home/jiff/binary/st", NULL };
 static const char *lockcmd[]  = { "/usr/bin/slock", NULL };
@@ -88,9 +88,9 @@ static const char *quietercmd[]  = { "/usr/bin/amixer", "-D", "pipewire", "sset"
 static const char scratchpadname[] = "scratchpad";
 static const char scratchpadnametwo[] = "(Untitled)";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-static const char *scratchpadcmdtwo[] = { "leafpad", NULL };
-static const char *passmenucmd[] = { "/usr/local/bin/passmenu", NULL }; 
-static const char *passmenuotpcmd[] = { "/usr/local/bin/passmenu", "--otp", NULL };
+static const char *scratchpadcmdtwo[] = { "mousepad", NULL };
+static const char *passmenucmd[] = { "/home/jiff/binary/passmenu", NULL }; 
+static const char *passmenuotpcmd[] = { "/home/jiff/binary/passmenu", "--otp", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
