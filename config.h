@@ -27,8 +27,15 @@ static const int showsystray        = 1;     /* 0 means no systray */
 #define ICONSIZE 16   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 
+/*  Display modes of the tab bar: never shown, always shown, shown only in  */
+/*  monocle mode in the presence of several windows.                        */
+/*  Modes after showtab_nmodes are disabled.                                */
+enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
+static const int showtab			= showtab_always;        /* Default tab bar show mode */
+static const int toptab				= True;               /* False means bottom tab bar */
+
 /* tagging */
-static const char *tags[] = { "default", "crown", "field", "pond", "meadow", "stan", "hope" };
+static const char *tags[] = { "genesis", "throne", "expanse", "oasis", "verdure", "keystone", "aspire" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -77,7 +84,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *clipmenucmd[] = { "/usr/bin/clipmenu", NULL };
+static const char *clipmenucmd[] = { "/home/jiff/binary/clipmenu", NULL };
 static const char *dmenucmd[] = { "/home/jiff/binary/dmenu_run", "-m", dmenumon, "-l", "5", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "/home/jiff/binary/st", NULL };
 static const char *lockcmd[]  = { "/usr/bin/slock", NULL };
@@ -88,9 +95,9 @@ static const char *quietercmd[]  = { "/usr/bin/amixer", "-D", "pipewire", "sset"
 static const char scratchpadname[] = "scratchpad";
 static const char scratchpadnametwo[] = "(Untitled)";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-static const char *scratchpadcmdtwo[] = { "leafpad", NULL };
-static const char *passmenucmd[] = { "/usr/local/bin/passmenu", NULL }; 
-static const char *passmenuotpcmd[] = { "/usr/local/bin/passmenu", "--otp", NULL };
+static const char *scratchpadcmdtwo[] = { "mousepad", NULL };
+static const char *passmenucmd[] = { "/home/jiff/binary/passmenu", NULL }; 
+static const char *passmenuotpcmd[] = { "/home/jiff/binary/passmenu", "--otp", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -104,6 +111,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_7,      spawn,          {.v = darkercmd } },
 	{ MODKEY,                       XK_8,      spawn,          {.v = brightercmd } },
+	{ MODKEY,                       XK_w,      tabmode,        {-1} },
   { MODKEY,                       XK_minus,      spawn,      {.v = quietercmd } },
 	{ MODKEY,                       XK_equal,      spawn,      {.v = loudercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -153,5 +161,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkTabBar,            0,              Button1,        focuswin,       {0} },
 };
 
