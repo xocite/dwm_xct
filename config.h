@@ -31,11 +31,11 @@ static const int showsystray        = 1;     /* 0 means no systray */
 /*  monocle mode in the presence of several windows.                        */
 /*  Modes after showtab_nmodes are disabled.                                */
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
-static const int showtab			= showtab_always;        /* Default tab bar show mode */
+static const int showtab			= showtab_auto;        /* Default tab bar show mode */
 static const int toptab				= True;               /* False means bottom tab bar */
 
 /* tagging */
-static const char *tags[] = { "genesis", "throne", "expanse", "oasis", "verdure", "keystone", "aspire" };
+static const char *tags[] = { "1-firefox", "2-terminal", "3-notepad", "4-work", "5-jupiter", "6-saturn", "7-mail" };
 
 static const Rule rules[] = {
 	/* xprop(1):
