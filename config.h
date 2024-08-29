@@ -1,5 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
+/* jiff */
+#define Button8 8
+#define Button9 9
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -166,5 +170,11 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 	{ ClkTabBar,            0,              Button1,        focuswin,       {0} },
+	{ ClkClientWin,         0,              Button8,        focusmon,       {.i = -1} },
+	{ ClkClientWin,         0,              Button9,        focusmon,       {.i = +1} },
+	{ ClkClientWin,         MODKEY,              Button8,        focusstack,       {.i = -1} },
+	{ ClkClientWin,         MODKEY,              Button9,        focusstack,       {.i = +1} },
+	{ ClkRootWin,         0,              Button8,        focusmon,       {.i = -1} },
+	{ ClkRootWin,         0,              Button9,        focusmon,       {.i = +1} },
 };
 
